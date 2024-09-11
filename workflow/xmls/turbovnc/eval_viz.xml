@@ -39,12 +39,6 @@
         type='hidden' 
         value='qgis'  
       ></param>
-      <param 
-        name='bin' 
-        label='Service binary' 
-        type='hidden' 
-        value='chromium-browser --new-window http://127.0.0.1:3000/'  
-      ></param>
     </section>
     <section name='pwrl_host' type='section' title='Desktop Host' expanded='true'>
     <param 
