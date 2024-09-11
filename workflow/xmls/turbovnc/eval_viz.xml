@@ -39,8 +39,6 @@
         type='hidden' 
         value='qgis'  
       ></param>
-    </section>
-    <section name='service' type='section' title='Start chromium' expanded='true'>
       <param 
         name='bin' 
         label='Service binary' 
