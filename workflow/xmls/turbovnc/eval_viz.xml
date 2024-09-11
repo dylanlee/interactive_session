@@ -28,9 +28,9 @@
       </param>
       <param 
         name='load_env' 
-        label='Command to launch evaluation dashboards in chrome and qgis so can access benchmark stac api' 
+        label='Launch qgis so can access benchmark stac api' 
         type='text' 
-        value='source /contrib/software/Dylan.Lee/eval_env.sh' 
+        value='source /contrib/software/miniconda/miniconda/etc/profile.d/conda.sh ; conda activate qgis_stable' 
         help='To load the environment, enter the appropriate command, for example: module load module-name or source path/to/env.sh.'  
       ></param>
       <param 
