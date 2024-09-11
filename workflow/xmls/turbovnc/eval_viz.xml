@@ -30,7 +30,7 @@
         name='load_env' 
         label='Command to launch evaluation dashboards and benchmark STAC api' 
         type='text' 
-        value='source /contrib/software/miniconda/miniconda/etc/profile.d/conda.sh; conda activate qgis_stable' 
+        value='source /contrib/software/miniconda/miniconda/etc/profile.d/conda.sh & conda activate qgis_stable & chromium-browser --new-window http://127.0.0.1:3000/' 
         help='To load the environment, enter the appropriate command, for example: module load module-name or source path/to/env.sh.'  
       ></param>
       <param 
