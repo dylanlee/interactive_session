@@ -1,5 +1,7 @@
 #!/bin/bash
 
+chromium-browser --new-window http://127.0.0.1:3000/ &
+
 # Define a cleanup function
 cleanup() {
     ./utils/steps/clean_and_exit.sh 2>&1 | tee clean_and_exit.out
