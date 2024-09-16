@@ -30,7 +30,7 @@
         name='bin' 
         label='Service binary' 
         type='hidden' 
-        value='chromium-browser http://127.0.0.1:3000/ http://127.0.0.1:8080/external/http:/0.0.0.0:7822/?.language=en --new-window'  
+        value='chromium-browser http://127.0.0.1:3000/ http://127.0.0.1:8080/ --new-window'  
       ></param>
     </section>
     <section name='pwrl_host' type='section' title='Desktop Host' expanded='true'>
