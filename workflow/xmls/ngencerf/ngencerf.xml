@@ -3,6 +3,18 @@
   <cancel interpreter='bash'>kill.sh</cancel>
   <inputs>
     <param 
+      name='openPort' 
+      label='Service port on the user container' 
+      type='hidden' 
+      value='50505'  
+    ></param>
+    <param 
+        name='NGEN_CAL_SINGULARITY_CONTAINER_PATH' 
+        label='Path to the ngen-cal singularity container' 
+        type='hidden' 
+        value='/ngencerf-app/singularity/ngen-cal.sif'  
+    ></param>
+    <param 
         name='CONTAINER_DATA_DIR' 
         label='Path to the data directory within the container' 
         type='hidden' 
@@ -40,6 +52,12 @@
         value='2'  
       ></param>
       <param 
+        name='nginx_sif' 
+        label='NGINX Singularity container' 
+        type='hidden' 
+        value='/ngencerf-app/singularity/nginx-unprivileged.sif'  
+      ></param>
+      <param 
         name="build" 
         type="boolean" 
         truevalue="Yes" 
@@ -53,7 +71,7 @@
       <param 
         name='existing_port' 
         label='NGENCERF Port' 
-        type='text' 
+        type='hidden' 
         value='3000'
       ></param>
       <param 

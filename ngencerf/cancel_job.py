@@ -5,7 +5,10 @@ url = 'http://localhost:5000/cancel-job'
 
 # SLURM Job ID to cancel
 slurm_job_data = {
-    'job_id': '4'
+    'slurm_job_id': '4',
+    'process_id': '141_peter',
+    'job_stage': "CALIBRATION",
+    'auth_token': 'Authentication-token'
 }
 
 try:
@@ -13,7 +16,7 @@ try:
     response = requests.post(url, data=slurm_job_data)
     
     if response.status_code == 200:
-        print(f"Job {slurm_job_data['job_id']} cancelled successfully.")
+        print(f"Job {slurm_job_data['slurm_job_id']} cancelled successfully.")
     else:
         print(f"Failed to cancel job: {response.json().get('error')}")
 except Exception as e:
