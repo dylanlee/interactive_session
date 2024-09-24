@@ -1,6 +1,17 @@
 # Make sure no conda environment is activated! 
 # https://github.com/parallelworks/issues/issues/1081
 
+
+
+start_gnome_session_with_retries() {
+    while true; do
+        gnome-session
+        sleep 2
+    done
+}
+
+
+
 if [ -z ${service_novnc_parent_install_dir} ]; then
     service_novnc_parent_install_dir=${HOME}/pw/software
 fi
@@ -169,10 +180,6 @@ if ! [[ $kernel_version == *microsoft* ]]; then
         echo '/etc/X11/xinit/xinitrc' >> ~/.vnc/xstartup
         chmod +x ~/.vnc/xstartup
     fi
-    
-    if ! grep -q gnome-session turbovnc/start-template.sh; then
-        echo "${service_desktop} &" >> ~/.vnc/xstartup
-    fi
 
     # service_vnc_type needs to be an input to the workflow in the XML
     # if vncserver is not tigervnc
@@ -193,14 +200,20 @@ if ! [[ $kernel_version == *microsoft* ]]; then
         ssh -N -f localhost &
         echo $! > ${resource_jobdir}/service.pid
     fi
+    
     mkdir -p /run/user/$(id -u)/dconf
     chmod og+rx /run/user/$(id -u)
     chmod 755 /run/user/$(id -u)/dconf
 
     # Start desktop here too just in case
-    eval ${service_desktop} &
-    echo "$!" >> ${resource_jobdir}/service.pid
-
+    if [[ ${service_desktop} == "gnome-session" ]]; then
+        start_gnome_session_with_retries &
+        service_desktop_pid=$!
+    else
+        eval ${service_desktop} &
+        service_desktop_pid=$!
+    fi
+    echo "${service_desktop_pid}" >> ${resource_jobdir}/service.pid
 fi
 
 cd ${service_novnc_install_dir}
